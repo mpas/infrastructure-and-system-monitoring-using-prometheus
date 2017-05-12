@@ -1,0 +1,19 @@
+version: '2'
+services:
+
+    prometheus:
+        image: prom/prometheus:latest
+        container_name: prometheus
+        volumes:
+            - $PWD:/etc/prometheus
+        ports:
+            - "9090:9090"
+        command:
+            - "-config.file=/etc/prometheus/prometheus.yml"
+
+    springboot:
+        image: springboot-prometheus-demo
+        ports:
+            - "8081:8080"        
+        environment:
+          - server.port=8080

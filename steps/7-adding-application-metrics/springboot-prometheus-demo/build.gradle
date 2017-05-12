@@ -1,0 +1,57 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+
+	compile('io.prometheus:simpleclient_spring_boot:0.0.21')
+}
+
+String dockerImageName = "springboot-prometheus-demo"
+
+task buildDockerImage(type:Exec) {
+	group = 'docker'
+	description = 'Build a docker image'
+	commandLine 'docker', 'build', '-f', 'build/docker/Dockerfile', '-t', "${dockerImageName}", 'build/docker'
+
+	doFirst {
+		println ">> Creating image: ${dockerImageName}"
+		copy {
+			from 'src/main/docker/app/'
+			into 'build/docker/app'
+		}
+		copy {
+			from jar.archivePath
+			into 'build/docker/app/'
+		}
+		copy {
+			from('src/main/docker/') {
+				include 'Dockerfile'
+			}
+			into 'build/docker'
+		}
+		file("build/docker/app/${jar.archiveName}").renameTo("build/docker/app/application.jar")
+	}
+}

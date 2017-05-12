@@ -1,0 +1,12 @@
+{
+	"name": "service1",
+	"address": "springboot1",
+	"port": 8080,
+	"check": {
+		"id": "api",
+		"name": "HTTP API on port 8080",
+		"http": "http://springboot1:8080/health",
+		"interval": "10s",
+		"timeout": "1s"
+	}
+}

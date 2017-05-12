@@ -1,0 +1,61 @@
+version: '2'
+services:
+
+    prometheus:
+        image: prom/prometheus:latest
+        container_name: prometheus
+        volumes:
+            - $PWD:/etc/prometheus
+        ports:
+            - "9090:9090"
+        command:
+            - "-config.file=/etc/prometheus/prometheus.yml"
+            - "-alertmanager.url=http://alertmanager:9093"
+
+    node-exporter:
+        image: prom/node-exporter:latest
+        ports:
+          - '9100:9100'
+
+    grafana:
+        image: grafana/grafana:latest
+        depends_on:
+            - prometheus
+        ports:
+          - "3000:3000"
+
+    cadvisor:
+        image: google/cadvisor:latest
+        ports:
+            - "8090:8080"
+        volumes:
+          - /:/rootfs:ro
+          - /var/run:/var/run:rw
+          - /sys:/sys:ro
+          - /var/lib/docker/:/var/lib/docker:ro
+
+    alertmanager:
+        image: prom/alertmanager
+        depends_on: 
+          - "ping"
+        ports:
+          - 9093:9093
+        volumes: 
+          - $PWD:/etc/alertmanager/
+        command:
+          - '-config.file=/etc/alertmanager/alert-manager.yml'
+          - '-storage.path=/alertmanager'
+
+    mailslurper:
+        image: marcopas/docker-mailslurper 
+        ports:
+          - 2500:2500
+          - 9000:8080
+          - 8085:8085
+        volumes:
+          - $PWD/mailslurper-config.json:/opt/mailslurper/config.json
+
+    ping:
+        image: alpine
+        container_name: ping
+        command: ping localhost

@@ -1,0 +1,38 @@
+#
+# Service down alert
+#
+ALERT containerAlert
+    IF absent(((time() - container_last_seen{name="ping"}) < 5)) 
+    FOR 5s
+    LABELS { 
+        severity = "critical",
+        service = "backend"
+    }
+    ANNOTATIONS {
+    	SUMMARY = "Container Instance down",
+    	DESCRIPTION = "Container Instance is down for more than 15 sec."
+    }
+
+#
+# CPU Alerts
+#
+ALERT HighCPU
+    IF ((sum(node_cpu{mode=~"user|nice|system|irq|softirq|steal|idle|iowait"}) by (instance, job)) - ( sum(node_cpu{mode=~"idle|iowait"}) by (instance,job) )   )   /  (sum(node_cpu{mode=~"user|nice|system|irq|softirq|steal|idle|iowait"}) by (instance, job)) * 100 > 95
+    FOR 10m
+    LABELS { 
+        severity = "warning",
+        service = "backend" 
+    }
+    ANNOTATIONS {
+        summary = "High CPU Usage",
+        description = "This machine has really high CPU usage for over 10m",
+    }    
+
+#
+# Disk full prediction
+#
+ALERT DiskWillFillIn4Hours
+    IF predict_linear(node_filesystem_free{job='prometheus'}[1h], 4*3600) < 0 FOR 5m
+    LABELS { 
+        severity="critical"
+    }
