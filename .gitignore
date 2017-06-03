@@ -1,5 +1,5 @@
-steps/7-adding-application-metrics/springboot-prometheus-demo/build/**
 steps/1-run-prometheus-native/prometheus-1.5.2.darwin-amd64/data
+build
 .idea
 .gradle
 .classpath
