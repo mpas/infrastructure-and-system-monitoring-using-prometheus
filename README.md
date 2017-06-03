@@ -8,13 +8,13 @@
 
 ### Build the required Spring Boot Docker image
 
-This image is used in `./7-adding-application-metrics`
+This image is used in `./steps/7-adding-application-metrics`
 
 * Execute `./build-docker-images`
 
 ### Integration with Slack
 
-* Please add your own Slack API webhook in `./6-alerting/alert-manager.yml`
+* Please add your own Slack API webhook in `./steps/6-alerting/alert-manager.yml`
 
 ## Step 1: Running Prometheus native
 
