@@ -4,7 +4,11 @@
 
 * Docker installed
 * Docker Compose installed
-* HTTPie installed (used to register the SpringBoot services used in step 8)
+* HTTPie installed
+  * Used to register the Spring Boot services in `./steps/8-consul-integration`)
+  * <https://httpie.org/>
+
+  
 
 ### Build the required Spring Boot Docker image
 
