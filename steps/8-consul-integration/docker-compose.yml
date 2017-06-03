@@ -3,7 +3,6 @@ services:
 
     prometheus:
         image: prom/prometheus:latest
-        container_name: prometheus
         volumes:
             - $PWD:/etc/prometheus
         ports:

@@ -1,4 +1,4 @@
-# Demo Structure
+# General
 
 ## Prerequisites
 
@@ -8,10 +8,9 @@
 
 ### Build the required SpringBoot Docker image
 
-* Change working directory to `./7-adding-application-metrics`
-* Execute: the `./build.sh`
+* Execute `./build-docker-images`
 
-## Integration with Slack
+### Integration with Slack
 
 * Please add your own Slack API webhook in `./6-alerting/alert-manager.yml`
 
