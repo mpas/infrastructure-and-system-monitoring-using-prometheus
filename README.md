@@ -4,21 +4,21 @@
 
 * Docker installed
 * Docker Compose installed
-* HTTPie installed
-  * Used to register the Spring Boot services in `./steps/8-consul-integration`)
-  * <https://httpie.org/>
+* HTTPie installed - <https://httpie.org/>
 
-  
-
-### Build the required Spring Boot Docker image
-
-This image is used in `./steps/7-adding-application-metrics`
+### Build the required Docker images
 
 * Execute `./build-docker-images`
+
+This will build the following images:
+
+* **Spring Boot Prometheus Demo**: Spring Boot app with custom metrics added
 
 ### Integration with Slack
 
 * Please add your own Slack API webhook in `./steps/6-alerting/alert-manager.yml`
+
+---
 
 ## Step 1: Running Prometheus native
 
