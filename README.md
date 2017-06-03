@@ -6,7 +6,9 @@
 * Docker Compose installed
 * HTTPie installed (used to register the SpringBoot services used in step 8)
 
-### Build the required SpringBoot Docker image
+### Build the required Spring Boot Docker image
+
+This image is used in `./7-adding-application-metrics`
 
 * Execute `./build-docker-images`
 
