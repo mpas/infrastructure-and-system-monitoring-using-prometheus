@@ -8,13 +8,13 @@
 
 ### Build the required Docker images
 
-* Execute `./build-docker-images`
+* Execute `./build-docker-images.sh`
 
 This will build the following images:
 
 * **Spring Boot Prometheus Demo**: Spring Boot app with custom metrics added
 
-### Integration with Slack
+### Configuration
 
 * Please add your own Slack API webhook in `./steps/6-alerting/alert-manager.yml`
 
