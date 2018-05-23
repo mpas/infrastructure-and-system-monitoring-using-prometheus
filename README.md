@@ -16,7 +16,7 @@ This will build the following images:
 
 ### Configuration
 
-* Please add your own Slack API webhook in `./steps/6-alerting/alert-manager.yml`
+* Please add your own Slack API webhook in `./steps/6-alerting/config.yml`
 
 ---
 
