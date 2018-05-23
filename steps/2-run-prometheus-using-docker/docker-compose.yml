@@ -1,11 +1,10 @@
-version: '2'
+version: "3"
 services:
 
     prometheus:
         image: prom/prometheus:latest
-        volumes:
-            - $PWD:/etc/prometheus
+        container_name: prometheus
         ports:
             - "9090:9090"
-        command:
-            - "-config.file=/etc/prometheus/prometheus.yml"
+        volumes:
+            - $PWD:/etc/prometheus/

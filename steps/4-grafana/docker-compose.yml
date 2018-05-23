@@ -1,21 +1,22 @@
-version: '2'
+version: '3'
 services:
 
     prometheus:
         image: prom/prometheus:latest
-        volumes:
-            - $PWD:/etc/prometheus
+        container_name: prometheus
         ports:
             - "9090:9090"
-        command:
-            - "-config.file=/etc/prometheus/prometheus.yml"
+        volumes:
+            - $PWD:/etc/prometheus/
 
     node-exporter:
         image: prom/node-exporter:latest
+        container_name: node-exporter
         ports:
           - '9100:9100'
 
     grafana:
         image: grafana/grafana:latest
+        container_name: grafana
         ports:
           - "3000:3000"

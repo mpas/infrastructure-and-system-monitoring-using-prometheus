@@ -71,9 +71,9 @@ This will build the following images:
 * Start Prometheus using docker-compose > dc up
 * cAdvisor
   * Explain cAdvisor
-  * Navigate to http://localhost:8090
+  * Navigate to http://localhost:8093
   * Show gauges and meters
-  * Navigate to http://localhost:8090/metrics
+  * Navigate to http://localhost:8093/metrics
   * Show metrics
 * Grafana
   * Navigate to http://localhost:3000
@@ -152,10 +152,13 @@ This will build the following images:
 [node-exporter]: http://localhost:9100
 [node-exporter-metrics]: http://localhost:9100/metrics
 [alertmanager]: http://localhost:9093
-[cadvisor-ui]: http://localhost:8090
-[cadvisor-metrics]: http://localhost:8090/metrics
+[cadvisor-ui]: http://localhost:8093
+[cadvisor-metrics]: http://localhost:8093/metrics
 [grafana]: http://localhost:3000
 [alert-manager]: http://localhost:9093
 [mailslurper]: http://localhost:8085
 [springboot metrics]: http://localhost:8080/metrics
 [springboot helloworld]: http://localhost:8080/helloworld
+
+References:
+https://github.com/stefanprodan/dockprom

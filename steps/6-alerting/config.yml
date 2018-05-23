@@ -1,0 +1,28 @@
+global:
+  smtp_smarthost: 'mailslurper:2500'
+  smtp_from: 'alertmanager@example.org'
+  smtp_require_tls: false
+
+route:
+  receiver: mail # Fallback
+  routes:
+  - match:
+      severity: critical
+    continue: true
+    receiver: mail
+  - match:
+      severity: critical
+    receiver: slack
+
+receivers:
+- name: mail
+  email_configs:
+    - send_resolved: true
+      from: 'foo@bar.acme'
+      to: 'please-help@bar.acme'
+- name: slack
+  slack_configs:
+    - send_resolved: true
+      username: 'AlertManager'
+      channel: '#devops'
+      api_url: '<SUPERSECRET WEBHOOK API URL>'
