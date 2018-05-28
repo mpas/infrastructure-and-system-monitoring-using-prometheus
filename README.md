@@ -152,11 +152,11 @@ This will build the following images:
 [node-exporter]: http://localhost:9100
 [node-exporter-metrics]: http://localhost:9100/metrics
 [alertmanager]: http://localhost:9093
-[cadvisor-ui]: http://localhost:8093
-[cadvisor-metrics]: http://localhost:8093/metrics
+[cadvisor-ui]: http://localhost:8095
+[cadvisor-metrics]: http://localhost:8095/metrics
 [grafana]: http://localhost:3000
 [alert-manager]: http://localhost:9093
-[mailslurper]: http://localhost:8085
+[mailslurper]: http://localhost:9000
 [springboot metrics]: http://localhost:8080/metrics
 [springboot helloworld]: http://localhost:8080/helloworld
 
